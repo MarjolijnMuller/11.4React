@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './WeatherDetail.css';
+import {TempContext} from "../../context/TempProvider";
+
+const {kelvinToMetric} = useContext(TempContext);
 
 function WeatherDetail() {
   return (
@@ -8,7 +11,7 @@ function WeatherDetail() {
         *Icoontje van het weer*
       </span>
       <p className="description">Zonnig</p>
-      <p>13&deg; C</p>
+      <p>{kelvinToMetric(forecast.temp.day)}</p>
     </section>
   );
 };

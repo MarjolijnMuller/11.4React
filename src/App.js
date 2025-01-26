@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import SearchBar from './components/searchBar/SearchBar';
 import TabBarMenu from './components/tabBarMenu/TabBarMenu';
 import MetricSlider from './components/metricSlider/MetricSlider';
 import './App.css';
+import {TempContext} from "./context/TempProvider";
 
 function App() {
+  const {kelvinToMetric} = useContext(TempContext);
   return (
     <>
       <div className="weather-container">
@@ -16,7 +18,7 @@ function App() {
           <span className="location-details">
             <h2>Bewolkt</h2>
             <h3> </h3>
-            <h1>14 &deg;</h1>
+            <h1>{kelvinToMetric(forecast.temp.day)}</h1>
 
             <button type="button">
               Haal data op!

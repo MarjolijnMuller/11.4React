@@ -1,5 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import './ForecastTab.css';
+import {TempContext} from "../../context/TempProvider";
+import kelvinToCelcius from "../../helpers/kelvinToCelcius";
+
+const {kelvinToMetric} = useContext(TempContext);
 
 function ForecastTab() {
   return (
@@ -11,7 +15,7 @@ function ForecastTab() {
 
         <section className="forecast-weather">
             <span>
-              12&deg; C
+              {kelvinToMetric(forecast.temp.day)}
             </span>
           <span className="weather-description">
               Licht Bewolkt
